@@ -104,32 +104,33 @@ background:#e6c200;
 
 .cart{
 position:fixed;
-top:0;
-right:-420px;
-width:380px;
-max-width:90%;
-height:100vh;
-background:white;
-padding:20px;
-box-shadow:-5px 0 20px rgba(0,0,0,.3);
-overflow-y:auto;
-transition:right .35s ease;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+background:gold;
+border-radius:50%;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+display:none;   /* hidden until first item */
+overflow:hidden;
 z-index:9999;
+transition:all .3s ease;
+cursor:pointer;
 }
 
+/* SHOW AFTER FIRST ITEM */
 .cart.show{
-right:0;
+display:block;
 }
 
-/* ONLY CART INSIDE MOBILE */
-@media (max-width: 600px){
-.cart{
-width:85%;
-right:-85%;
-border-radius:15px 0 0 15px;
-}
-.cart.show{
-right:0;
+/* EXPANDED STATE */
+.cart.open{
+width:300px;
+height:400px;
+border-radius:12px;
+background:white;
+padding:15px;
+overflow-y:auto;
 }
 
 
@@ -337,7 +338,9 @@ onclick="closeCart()">
 &times;
 </span>
 
-<h2>🛒 Customer Order</h2>
+<h2 onclick="toggleCart()" style="cursor:pointer;">
+🛒 Cart
+</h2>
 
 <div id="list"></div>
 
@@ -374,6 +377,7 @@ if(item){
 render();
 
 document.getElementById("cartBox").classList.add("show");
+document.getElementById("cartBox").classList.add("open");
 
 }
 
@@ -408,6 +412,10 @@ function closeCart(){
 
 document.getElementById("cartBox").classList.remove("show");
 
+}
+    
+function toggleCart(){
+document.getElementById("cartBox").classList.toggle("open");
 }
 
 function sendOrder(){
