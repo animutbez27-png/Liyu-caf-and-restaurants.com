@@ -104,13 +104,34 @@ background:#e6c200;
 
 /* CART */
 .cart{
-margin:30px auto;
-padding:20px;
-max-width:900px;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:90%;
+max-width:500px;
+max-height:85vh;
+overflow-y:auto;
 background:white;
-border-radius:14px;
-box-shadow:0 4px 12px rgba(0,0,0,.15);
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 25px rgba(0,0,0,.4);
+z-index:9999;
+display:none;
 }
+
+.cart.show{
+display:block;
+}
+
+.close-cart{
+float:right;
+font-size:28px;
+font-weight:bold;
+cursor:pointer;
+color:red;
+}
+
 
 .item{
 display:flex;
@@ -281,7 +302,12 @@ color:white;
 
 </div>
 
-<div class="cart">
+<div class="cart" id="cartBox">
+
+<span class="close-cart"
+onclick="closeCart()">
+&times;
+</span>
 
 <h2>🛒 Customer Order</h2>
 
@@ -308,10 +334,19 @@ color:white;
 let cart=[];
 
 function add(name,price){
+
 let item=cart.find(i=>i.name===name);
-if(item) item.qty++;
-else cart.push({name,price,qty:1});
+
+if(item){
+    item.qty++;
+}else{
+    cart.push({name,price,qty:1});
+}
+
 render();
+
+document.getElementById("cartBox").classList.add("show");
+
 }
 
 function render(){
@@ -339,6 +374,12 @@ function change(i,val){
 cart[i].qty+=val;
 if(cart[i].qty<=0) cart.splice(i,1);
 render();
+}
+
+function closeCart(){
+
+document.getElementById("cartBox").classList.remove("show");
+
 }
 
 function sendOrder(){
