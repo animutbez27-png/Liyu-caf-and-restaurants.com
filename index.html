@@ -366,12 +366,6 @@ color:white;
 
 <div class="cart" id="cartBox">
 
-<div class="customer-info">
-    <p><strong>Name:</strong> <span id="showName">-</span></p>
-    <p><strong>Phone:</strong> <span id="showPhone">-</span></p>
-    <p><strong>Address:</strong> <span id="showAddress">-</span></p>
-</div>
-
 <span class="close-cart"
 onclick="closeCart()">
 &times;
@@ -385,9 +379,14 @@ onclick="closeCart()">
 
 <h3>Total: <span id="total">0</span> Birr</h3>
 
-<input id="name" placeholder="Customer Name">
-<input id="phone" placeholder="Phone">
-<textarea id="address" placeholder="Address"></textarea>
+<label for="name">👤 Name / ስም</label>
+<input id="name" placeholder="Enter customer name">
+
+<label for="phone">📞 Phone / ስልክ</label>
+<input id="phone" placeholder="Enter phone number">
+
+<label for="address">📍 Address / አድራሻ</label>
+<textarea id="address" placeholder="Enter delivery address"></textarea>
 
 <div class="order-buttons">
 
