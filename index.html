@@ -107,8 +107,8 @@ position:fixed;
 top:0;
 right:-420px;
 width:380px;
-max-width:95%;
-height:100%;
+max-width:90%;
+height:100vh;
 background:white;
 padding:20px;
 box-shadow:-5px 0 20px rgba(0,0,0,.3);
@@ -117,17 +117,19 @@ transition:right .35s ease;
 z-index:9999;
 }
 
+/* Desktop open */
 .cart.show{
 right:0;
 }
 
-.close-cart{
-float:right;
-font-size:28px;
-font-weight:bold;
-cursor:pointer;
-color:red;
-margin-bottom:10px;
+/* 📱 MOBILE VERSION */
+@media (max-width: 600px){
+.cart{
+width:100%;
+right:-100%;
+}
+.cart.show{
+right:0;
 }
 
 
